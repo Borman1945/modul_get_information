@@ -7,16 +7,16 @@
 -- Вы создали image и конетеры c postgres/  redis / aplication
    не останавливаем приложение
 6) необходимо накстроить connect с redis для этого: 
-        1. Заходим в docker
-        2. выполняем команду - docker network create spring-redis-network (create connection)
-        3. docker network connect spring-redis-network redis (присоединяем к ней redis)
-        4. docker inspect spring-redis-network  - смотрим адрес редиса - у меня это = 172.21.0.1
-        5. заходим в aplication property и сетим адрес из пунка выше  - spring.redis.host= 172.21.0.1
-        c postgres аналогично
-            docker network create spring-postgres-network
-            docker network connect spring-postgres-network postgres-db
-            docker inspect spring-postgres-network смотрим адрес - у меня 172.19.0.1
-            заходим в aplication property и сетим адрес из пунка выше spring.datasource.url=jdbc:postgresql://172.19.0.1:5432/vv
+a. Заходим в docker
+b. выполняем команду - docker network create spring-redis-network (create connection)
+c. docker network connect spring-redis-network redis (присоединяем к ней redis)
+d. docker inspect spring-redis-network  - смотрим адрес редиса - у меня это = 172.21.0.1
+e. заходим в aplication property и сетим адрес из пунка выше  - spring.redis.host= 172.21.0.1
+#  c postgres аналогично
+a. docker network create spring-postgres-network
+b. docker network connect spring-postgres-network postgres-db
+c. docker inspect spring-postgres-network смотрим адрес - у меня 172.19.0.1
+d. заходим в aplication property и сетим адрес из пунка выше spring.datasource.url=jdbc:postgresql://172.19.0.1:5432/vv
    
 7) стопайте приложение, можно пересобрать  и снова запустить. Проверял в postman.
    http://localhost:8080/rate_like/U
