@@ -13,7 +13,7 @@ c. docker network connect spring-redis-network redis (присоединяем �
 d. docker inspect spring-redis-network  - смотрим адрес редиса - у меня это = 172.21.0.1
 e. заходим в aplication property и сетим адрес из пунка выше  - spring.redis.host= 172.21.0.1
 #  c postgres аналогично
-a. docker network create spring-postgres-network
+a. docker network create --driver=bridge spring-postgres-network
 b. docker network connect spring-postgres-network postgres-db
 c. docker inspect spring-postgres-network смотрим адрес - у меня 172.19.0.1
 d. заходим в aplication property и сетим адрес из пунка выше spring.datasource.url=jdbc:postgresql://172.19.0.1:5432/vv
