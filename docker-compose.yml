@@ -14,12 +14,20 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/vv
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      mynetwork:
+        aliases:
+         - app.mynetwork
   redis:
     container_name: redis
     image: redis
     hostname: redis
     ports:
       - "6379:6379"
+    networks:
+      mynetwork:
+        aliases:
+          - redis.mynetwork
   postgres-db:
     container_name: postgres-db
     image: postgres:latest
@@ -30,3 +38,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: qqq
       POSTGRES_DB: vv
+    networks:
+      mynetwork:
+        aliases:
+          - postgres.mynetwork
+networks:
+  mynetwork:
+    external:
+      name: myglobalnetwork
